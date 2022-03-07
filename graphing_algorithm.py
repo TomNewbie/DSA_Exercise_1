@@ -14,13 +14,11 @@ with open('result.csv', mode ='r') as file:
 draft = np.array(draft) #Convert the list to an actual 2D array so that it can be sliced conveniently by integrated array-slicing method from numpy
 
 #Take the first row of 2D array and separate out the first element of the array, make each piece a 1D array
-x=draft[0][1:] ; y=draft[1][1:] ; z=draft[2][1:] ; t=draft[3][1:]
-
 #Convert each element in the array to float-type variable and append back to the list
-x=([float(i) for i in x])
-y=([float(i) for i in y])
-z=([float(i) for i in z])
-t=([float(i) for i in t])
+x=([float(i) for i in draft[0][1:]])
+y=([float(i) for i in draft[1][1:]])
+z=([float(i) for i in draft[2][1:]])
+t=([float(i) for i in draft[3][1:]])
 
 plt.figure(figsize=(50, 10)) #Set out size of the figure
 
