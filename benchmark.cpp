@@ -3,11 +3,14 @@
 using namespace std;
 using namespace std::chrono;
 
-void generateRand(int arr[], int length)
+void generateRand(int arr[], int length, int i = -1) // i = -1 is a predefine argument
 {
-    srand(time(NULL));
+    if(i == -1){
+        srand(time(NULL));
+    }
+    srand(i);
     for (int i = 0; i < length; i++) {
-        arr[i] = rand();
+        arr[i] = rand() % 17232 + 1 ;
     }
 }
 void printArray(int arr[], int length)
@@ -110,18 +113,18 @@ void copyArray(int arr_source[], int arr_dest[], int length)
     }
 }
 
-auto executionTime(int length, int arr[], void (*func)(int[], int))
+auto executionTime(int length, int arr[], void (*func)(int[], int)) // func is a function pointer
 {
     double sum = 0;
-    int quicksort[length];
-    copyArray(arr, quicksort, length);
+    int sortArr[length];
+    copyArray(arr, sortArr, length);
     high_resolution_clock::time_point t1 = high_resolution_clock::now();
-    func(quicksort, length - 1);
+    func(sortArr, length - 1);
     high_resolution_clock::time_point t2 = high_resolution_clock::now();
     auto duration = duration_cast<nanoseconds>(t2 - t1);
+    // print array here;
+    // printArray(sortArr, length);
     return duration.count();
-    // cout << "Time run: " << sum / 1000 << endl;
-    // cout << "-----------" << endl;
 }
 
 void benchmark(int length, int numGenerate = 10)
@@ -130,7 +133,7 @@ void benchmark(int length, int numGenerate = 10)
     double sum_qs = 0, sum_merge = 0, sum_insert = 0;
     for (int i = 0; i < numGenerate; i++) {
         int arr[length];
-        generateRand(arr, length);
+        generateRand(arr, length, i);
         sum_qs += executionTime(length, arr, quick_sort);
         sum_insert += executionTime(length, arr, insertion_sort);
         sum_merge += executionTime(length, arr, merge_sort);
