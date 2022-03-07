@@ -141,7 +141,6 @@ void benchmark(int length, int numGenerate = 10)
     cout << "Time run Quicksort " << sum_qs / (1000000 * numGenerate) << endl;
     cout << "Time run Merge " << sum_merge / (1000000 * numGenerate) << endl;
     cout << "Time run Insertion " << sum_insert / (1000000 * numGenerate) << endl;
-
     cout << "-----------" << endl;
 }
 
