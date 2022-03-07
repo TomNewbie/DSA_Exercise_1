@@ -151,10 +151,13 @@ int main()
     benchmark(500);
     benchmark(1000);
     benchmark(2000);
+    benchmark(3000);
+    benchmark(4000);
     benchmark(5000);
+    benchmark(6000);
+    benchmark(7000);
+    benchmark(8000);
+    benchmark(9000);
     benchmark(10000);
-    benchmark(20000);
-    benchmark(50000);
-    benchmark(100000);
     return 0;
 }
