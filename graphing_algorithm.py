@@ -27,7 +27,9 @@ plt.figure(figsize=(50, 10)) #Set out size of the figure
 plt.scatter(x, y) ; plt.scatter(x, z) ; plt.scatter(x, t) #Map out all points of all 3 data sets
 
 #Plot the points altogether
-plt.plot(x, y, label='Quick Sort') ; plt.plot(x, z, label='Merge Sort') ; plt.plot(x, t, label='Insertion Sort') 
+plt.plot(x, y, label='Quick Sort', color="black")
+plt.plot(x, z, label='Merge Sort', color="brown")
+plt.plot(x, t, label='Insertion Sort', color="blue") 
 
 #Label the x-axis and y-axis
 plt.xlabel('n value') ; plt.ylabel('Average time executed (ms)')
