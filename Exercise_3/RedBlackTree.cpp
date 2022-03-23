@@ -175,7 +175,7 @@ void inOrderUtil(Node *root){
     string a = " (B)";
     if(root == NULL) return;
     inOrderUtil(root->left);
-    if(root->isRed) a = " (A)";
+    if(root->isRed) a = " (R)";
     cout << root->data << a << "  ";
     inOrderUtil(root->right);
 }
