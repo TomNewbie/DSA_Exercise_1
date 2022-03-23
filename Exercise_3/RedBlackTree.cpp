@@ -172,10 +172,10 @@ void levelOrderUtil(Node *root){
 }
 
 void inOrderUtil(Node *root){
-    string a = " (B)";
+    string a = "(B)";
     if(root == NULL) return;
     inOrderUtil(root->left);
-    if(root->isRed) a = " (R)";
+    if(root->isRed) a = "(R)";
     cout << root->data << a << "  ";
     inOrderUtil(root->right);
 }
