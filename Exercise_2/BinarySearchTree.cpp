@@ -115,23 +115,32 @@ Node* deleteNode(Node* root, int key){
     else if(root->data < key) root->right = deleteNode(root->right, key);
     else{
         if(root->right == NULL && root->left == NULL){
+                        cout << "1" << endl;
+
             delete root;
             root = NULL;
         }
         else if(root->left == NULL){
             Node* temp = root;
             root = root->right;
+            cout << "2" << endl;
+
             delete temp;
         }
         else if(root->right == NULL){
             Node* temp = root;
             root = root->left;
+                        cout << "3" << endl;
+
             delete temp;
         }
         else{
             int temp = FindMin(root->right);
+            cout << temp << endl;
             root->data = temp;
             root->right = deleteNode(root->right, temp);
+            cout << root->data << endl;
+            cout << "4" << endl;
         }
     }
     return root;
@@ -166,9 +175,7 @@ int main() {
 	//Create an array of 25 elements
 	int length =5;
     int random_array[5];
-    for(int i = 0; i < length ; i++){
-        cin >> random_array[i];
-    }
+    
     root = BSTforming(root,&random_array[0],length);
 
 	//Forming and performing preorder traversal of a 25-node tree
@@ -176,10 +183,9 @@ int main() {
 	inorder(root);
     cout <<endl;
     // Delete a value in root;
-    // deleteNode(root, root->data);
-    // deleteNode(root, root->data);
-    deleteNode(root, root->data);
-    // deleteNode(root, root->data);
+    root = deleteNode(root, root->data);
+    root = deleteNode(root, root->data);
+    cout << root->data << endl;
     cout << "Inorder traversal of the given tree:" << endl;
     inorder(root);
     cout << "Run";
