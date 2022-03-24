@@ -1,6 +1,7 @@
-#include <bits/stdc++.h>
+#include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <queue>
 using namespace std;
 
 struct Node {
@@ -70,9 +71,9 @@ int FindMin(Node* root)
 struct Node* Delete(struct Node *root, int data)
 {
     if(root==NULL) return root; //empty tree
-    else if(data<root->data)
+    else if(data < root->data)
         root->left=Delete(root->left,data);
-    else if(data>root->data)
+    else if(data > root->data)
         root->right=Delete(root->right,data);
     else
     {
@@ -108,7 +109,22 @@ struct Node* Delete(struct Node *root, int data)
     }
     return root;
 };
-
+void breadth_first_traversal(Node* root){ 
+    //print all the element on each level
+    if(root == NULL) cout << "This tree is empty stupid";
+    else{
+        queue<Node*> Q; //why new not work in here ?>??
+        Q.push(root);
+        while(!Q.empty()){
+            Node* current = Q.front();
+            cout << current->data << "  ";
+            if(current->left != NULL) Q.push(current->left);
+            if(current->right != NULL) Q.push(current->right);
+            Q.pop();
+        }
+    }
+    cout <<endl;
+}
 Node* BSTforming(Node *root, int* array, int length)
 {
 	for (int i=0;i<length;i++)
@@ -121,11 +137,13 @@ int main() {
     Node* root = NULL;
 
 	//Create an array of 25 elements
-	int array_length = 25;
-	int* random_array = create_array(array_length);
-    root = BSTforming(root,random_array,array_length);
+	int length =25;
+    int random_array[25];
+    for(int i = 0; i < length ; i++){
+        cin >> random_array[i];
+    }
+    root = BSTforming(root,&random_array[0],length);
 
-    free(random_array);
 	//Forming and performing preorder traversal of a 25-node tree
     cout << "Inorder traversal of the given tree:" << endl;
 	inorder(root);
@@ -133,8 +151,12 @@ int main() {
     // Delete a value in root;
     Delete(root, root->data);
     Delete(root, root->data);
+    Delete(root, root->data);
+    Delete(root, root->data);
+    Delete(root, root->data);
+
     cout << "Inorder traversal of the given tree:" << endl;
-	inorder(root);
+    inorder(root);
 	cout << endl;
     return 0;
 }
