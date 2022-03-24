@@ -6,12 +6,12 @@ using namespace std;
 
 struct Node {
     int data;
-    struct Node *left, *right;
+    Node *left, *right;
 };
-struct Node* createNode (int input){
+Node* createNode (int input){
     Node* temp = new Node;
-    temp -> data = input;
-    temp -> left = temp -> right = NULL;
+    temp->data = input;
+    temp->left = temp->right = NULL;
     return temp;
 }
 void inorder(Node *root)
@@ -27,9 +27,9 @@ struct Node* insert (struct Node* node, int key){
     if (node == NULL)
     return createNode (key);
     
-    if (key < node->data)
-    node -> left = insert (node -> left, key);
-    else node -> right = insert (node -> right, key);
+    if (key <= node->data)
+    node->left = insert (node->left, key);
+    else node->right = insert (node->right, key);
     return node;
 }
 bool ifNodeExists(struct Node* node, int key)
@@ -68,47 +68,74 @@ int FindMin(Node* root)
         root=root->left; //go to the left until minimum value
     return root->data;
 }
-struct Node* Delete(struct Node *root, int data)
-{
-    if(root==NULL) return root; //empty tree
-    else if(data < root->data)
-        root->left=Delete(root->left,data);
-    else if(data > root->data)
-        root->right=Delete(root->right,data);
-    else
-    {
-        //C1: No child
-        if(root->left==NULL&&root->right==NULL)
-            {
+// Node* Delete(struct Node *root, int data)
+// {
+//     if(root==NULL) return root; //empty tree
+//     else if(data < root->data)
+//         root->left=Delete(root->left,data);
+//     else if(data > root->data)
+//         root->right=Delete(root->right,data);
+//     else
+//     {
+//         //C1: No child
+//         if(root->left==NULL&&root->right==NULL)
+//             {
+//             delete root;
+//             root=NULL;
+//             return root;
+//             }
+
+//         //C2: 1 child
+//         else if(root->left==NULL)
+//         {
+//             struct Node *temp=root;
+//             root=root->right; //make right child new root of subtree
+//             delete temp;
+//         }
+//         else if(root->right==NULL)
+//         {
+//             struct Node *temp=root;
+//             root=root->left; //make left child new root of subtree
+//             delete temp;
+//         }
+
+//         //C3: 2 children
+//         else
+//         {
+//             int temp= FindMin(root->right); //start from right child of root
+//             root->data=temp;
+//             root->right=Delete(root->right,temp);
+//         }
+//     }
+//     return root;
+// }
+Node* deleteNode(Node* root, int key){
+    if(root == NULL) return root;
+    else if(root->data > key) root->left = deleteNode(root->left, key);
+    else if(root->data < key) root->right = deleteNode(root->right, key);
+    else{
+        if(root->right == NULL && root->left == NULL){
             delete root;
-            root=NULL;
-            return root;
-            }
-
-        //C2: 1 child
-        else if(root->left==NULL)
-        {
-            struct Node *temp=root;
-            root=root->right; //make right child new root of subtree
+            root = NULL;
+        }
+        else if(root->left == NULL){
+            Node* temp = root;
+            root = root->right;
             delete temp;
         }
-        else if(root->right==NULL)
-        {
-            struct Node *temp=root;
-            root=root->left; //make left child new root of subtree
+        else if(root->right == NULL){
+            Node* temp = root;
+            root = root->left;
             delete temp;
         }
-
-        //C3: 2 children
-        else
-        {
-            int temp= FindMin(root->right); //start from right child of root
-            root->data=temp;
-            root->right=Delete(root->right,temp);
+        else{
+            int temp = FindMin(root->right);
+            root->data = temp;
+            root->right = deleteNode(root->right, temp);
         }
     }
     return root;
-};
+}
 void breadth_first_traversal(Node* root){ 
     //print all the element on each level
     if(root == NULL) cout << "This tree is empty stupid";
@@ -137,8 +164,8 @@ int main() {
     Node* root = NULL;
 
 	//Create an array of 25 elements
-	int length =25;
-    int random_array[25];
+	int length =5;
+    int random_array[5];
     for(int i = 0; i < length ; i++){
         cin >> random_array[i];
     }
@@ -149,14 +176,13 @@ int main() {
 	inorder(root);
     cout <<endl;
     // Delete a value in root;
-    Delete(root, root->data);
-    Delete(root, root->data);
-    Delete(root, root->data);
-    Delete(root, root->data);
-    Delete(root, root->data);
-
+    // deleteNode(root, root->data);
+    // deleteNode(root, root->data);
+    deleteNode(root, root->data);
+    // deleteNode(root, root->data);
     cout << "Inorder traversal of the given tree:" << endl;
     inorder(root);
+    cout << "Run";
 	cout << endl;
     return 0;
 }
