@@ -138,10 +138,10 @@ int main() {
     Node* root = NULL;
 
 	//Create an array of 25 elements
-	int length =5;
-    int random_array[5];
+	int array_length = 25;
+	int* random_array = create_array(array_length);
     
-    root = BSTforming(root,&random_array[0],length);
+    root = BSTforming(root,random_array,array_length);
 
 	//Forming and performing preorder traversal of a 25-node tree
     cout << "Inorder traversal of the given tree:" << endl;
@@ -150,10 +150,11 @@ int main() {
     // Delete a value in root;
     root = Delete(root, root->data);
     root = Delete(root, root->data);
-    cout << root->data << endl;
+    root = Delete(root, root->data);
+    root = Delete(root, root->data);
+    root = Delete(root, root->data);
+    root = Delete(root, root->data);
     cout << "Inorder traversal of the given tree:" << endl;
     inorder(root);
-    cout << "Run";
-	cout << endl;
     return 0;
 }
