@@ -56,8 +56,8 @@ int main()
 {
 	vector<int> coins_type = {1,10,20,25,50,100};
 	int length = coins_type.size();
-	int total_val_1 = 276;
-	int total_val_2 = 281;
+	int total_val_1 = 4;
+	int total_val_2 = 3;
 	minCoins(coins_type, length, total_val_1);
 	cout << endl;
 	minCoins(coins_type, length, total_val_2);
