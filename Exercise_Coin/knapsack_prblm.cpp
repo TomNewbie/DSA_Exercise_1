@@ -8,7 +8,7 @@ using namespace std;
 
 void knapSack(int W, vector<int> weight, vector<int> value, int n)
 {
-    cout << "i->\t";
+    cout << "obj\t";
     for (int i = 1; i <= n; i++) {
         cout << i << "\t";
     }
@@ -39,19 +39,16 @@ void knapSack(int W, vector<int> weight, vector<int> value, int n)
                 K[i][j] = K[i - 1][j];
         }
     }
-    cout << "   ";
+    cout << "n/W\t";
     for (int i = 0; i <= W; i++)
-        cout << i << "  ";
+        cout << i << "\t";
     cout << endl;
-    for (int i = 0; i <= n; i++) {
-        cout << i << "  ";
+    for (int i = 1; i <= n; i++) {
+        cout << i << "\t";
         for (int j = 0; j <= W; j++) {
 
-            cout << K[i][j] << "  ";
+            cout << K[i][j] << "\t";
         }
-        // if (K[i][W] > K[i - 1][W]) {
-        //     max_obj.push_back(i);
-        // }
         cout << endl;
     }
     int i = n;
