@@ -110,11 +110,9 @@ int main()
 
     thobook.Search("thanh ga");
     thobook.Search("th");
-    // thobook.Display();
-    // thobook.DeleteKey("Somi");
-    // thobook.Display();
-    // cout << " test 1 " << endl;
-
+    thobook.Display();
+    thobook.DeleteKey("Somi");
+    thobook.Display();
     cout << "finish";
     return 0;
 }
