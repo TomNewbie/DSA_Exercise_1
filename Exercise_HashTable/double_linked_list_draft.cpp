@@ -263,9 +263,10 @@ int main()
     deleteLast();
     displayForward();
     cout << endl << endl;
-
-    cout << "List, insert after key(4) : ";  
+	
+    cout << "List , insert after key(4) and key (3): ";  
     insertAfter(4,7,13);
+    insertAfter(3,8,26);
     displayForward();
     cout << endl << endl;
 
