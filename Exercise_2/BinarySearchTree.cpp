@@ -16,7 +16,7 @@ Node* createNode (int input){
 }
 void inorder(Node *root)
 {
-	if (root != NULL) 
+	if (root != NULL)
 	{
 		inorder(root->left);
 		cout << root->data<<" ";
@@ -26,6 +26,7 @@ void inorder(Node *root)
 struct Node* insert (struct Node* node, int key){
     if (node == NULL)
     return createNode (key);
+<<<<<<< Updated upstream
     
     if (key <= node->data)
     node->left = insert (node->left, key);
@@ -42,6 +43,7 @@ bool ifNodeExists(struct Node* node, int key)
 {
     if (node == NULL)
         return false;
+
     if (node->data == key)
         return true;
 
@@ -154,11 +156,14 @@ int main() {
     cout <<endl;
     // Delete a value in root;
     root = Delete(root, root->data);
+<<<<<<< Updated upstream
     root = Delete(root, root->data);
     root = Delete(root, root->data);
     root = Delete(root, root->data);
     root = Delete(root, root->data);
     root = Delete(root, root->data);
+=======
+>>>>>>> Stashed changes
     cout << "Inorder traversal of the given tree:" << endl;
     inorder(root);
     return 0;
