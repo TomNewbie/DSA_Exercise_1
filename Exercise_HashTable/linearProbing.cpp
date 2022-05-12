@@ -7,7 +7,8 @@ using namespace std;
 struct phoneData {
     string name;
     string phoneNumber;
-    phoneData(string name, string phoneNumber) : name{name}, phoneNumber{phoneNumber} {}
+    phoneData(string name, string phoneNumber)
+        : name{name}, phoneNumber{phoneNumber} {}
 };
 template <int N>
 class HashMap {
@@ -53,10 +54,12 @@ public:
         int i = 0;
         while (i < N) {
             i++;
-            if(phoneBook[hashData] == nullptr) break;
+            if (phoneBook[hashData] == nullptr)
+                break;
             if (phoneBook[hashData]->name == key) {
                 cout << "Data found: " << endl;
                 cout << "Name: " << phoneBook[hashData]->name << "  Phone number: " << phoneBook[hashData]->phoneNumber << endl;
+                cout << "-------------------\n";
                 return;
             }
             else {
@@ -64,6 +67,7 @@ public:
             }
         }
         cout << "Data " << key << " not found!" << endl;
+        cout << "-------------------\n";
     }
     void DeleteKey(string key)
     {
@@ -71,7 +75,8 @@ public:
         int i = 0;
         while (i < N) {
             i++;
-            if(phoneBook[hashData] == nullptr) break;
+            if (phoneBook[hashData] == nullptr)
+                break;
             if (phoneBook[hashData]->name == key) {
                 phoneBook[hashData] = nullptr;
                 cout << "Data deleted successfully!" << endl;
@@ -87,14 +92,15 @@ public:
     {
         for (int i = 0; i < N; i++) {
             cout << "Data " << i << ": ";
-            if(phoneBook[i]==nullptr){
+            if (phoneBook[i] == nullptr) {
                 cout << endl;
                 continue;
             }
             cout << phoneBook[i]->name << " " << phoneBook[i]->phoneNumber;
             cout << endl;
         }
-        cout << endl << "--------------- \n";
+        cout << endl
+             << "--------------- \n";
     }
 };
 
