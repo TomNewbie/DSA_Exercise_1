@@ -72,7 +72,7 @@ public:
 
 int main()
 {
-    HashMap<10> thobook;
+    HashMap<4> thobook;
     thobook.Insert("Tho", "090312231");
     thobook.Insert("thanh ga", "021321312");
     thobook.Insert("Quan gar", "21321321");
