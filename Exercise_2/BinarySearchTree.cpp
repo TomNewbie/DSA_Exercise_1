@@ -30,25 +30,30 @@ struct Node* insert (struct Node* node, int key){
     if (key <= node->data)
     node->left = insert (node->left, key);
     else node->right = insert (node->right, key);
+=======
+
+    if (key < node->data)
+    node -> left = insert (node -> left, key);
+    else node -> right = insert (node -> right, key);
+>>>>>>> Stashed changes
     return node;
 }
 bool ifNodeExists(struct Node* node, int key)
 {
     if (node == NULL)
         return false;
- 
     if (node->data == key)
         return true;
- 
+
     /* then recur on left subtree */
     bool res1 = ifNodeExists(node->left, key);
     // node found, no need to look further
     if(res1) return true;
- 
+
     /* node is not found in left,
     so recur on right subtree */
     bool res2 = ifNodeExists(node->right, key);
- 
+
     return res2;
 }
 int* create_array(int length)
