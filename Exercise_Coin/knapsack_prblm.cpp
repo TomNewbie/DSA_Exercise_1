@@ -32,7 +32,8 @@ void knapSack(int W, vector<int> weight, vector<int> value, int n)
 
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= W; j++) {
-            if ((j >= weight[i - 1]) && ((K[i - 1][j - weight[i - 1]] + value[i - 1]) > K[i - 1][j])) {
+            if ((j >= weight[i - 1]) && ((K[i - 1][j - weight[i - 1]] + value[i - 1]) > K[i - 1][j])) 
+            {
                 K[i][j] = K[i - 1][j - weight[i - 1]] + value[i - 1];
             }
             else
@@ -52,25 +53,23 @@ void knapSack(int W, vector<int> weight, vector<int> value, int n)
         cout << endl;
     }
     int i = n;
-    while(i > 0)
-    {
-        if(K[i][W] > K[i-1][W])
-        {
+    while (i > 0) {
+        if (K[i][W] > K[i - 1][W]) {
             max_obj.push_back(i);
-            W -= weight[i-1];
+            W -= weight[i - 1];
             i--;
         }
-        else
-        {
+        else {
             i--;
         }
     }
-    cout << endl << "The optimize knapsack contains object ";
-    for (int i: max_obj)
-    {
-    	cout << i << " ";
+    cout << endl
+         << "The optimize knapsack contains object ";
+    for (int i : max_obj) {
+        cout << i << " ";
     }
-    cout << endl << endl;
+    cout << endl
+         << endl;
 }
 
 int main()
