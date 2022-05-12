@@ -72,19 +72,19 @@ public:
 
 int main()
 {
-    // HashMap<10> thobook;
-    // thobook.Insert("Tho", "090312231");
-    // thobook.Insert("thanh ga", "021321312");
-    // thobook.Insert("Quan gar", "21321321");
-    // thobook.Insert("Somi", "21321321");
-    // thobook.Insert("Nam", "69696321");
-    // thobook.Insert("Nghi", "1234521");
-
-    // thobook.Search("thanh ga");
-    // thobook.Search("th");
-    // thobook.Display();
-    // thobook.DeleteKey("Somi");
-    // thobook.Display();
+    HashMap<10> thobook;
+    thobook.Insert("Tho", "090312231");
+    thobook.Insert("thanh ga", "021321312");
+    thobook.Insert("Quan gar", "21321321");
+    thobook.Insert("Somi", "21321321");
+    thobook.Insert("Nam", "69696321");
+    thobook.Insert("Nghi", "1234521");
+    thobook.Display();
+    thobook.Search("thanh ga");
+    thobook.Search("th");
+    thobook.Display();
+    thobook.DeleteKey("Somi");
+    thobook.Display();
     cout << "finish";
     return 0;
 }

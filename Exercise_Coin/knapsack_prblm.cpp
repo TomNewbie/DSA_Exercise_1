@@ -32,8 +32,7 @@ void knapSack(int W, vector<int> weight, vector<int> value, int n)
 
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= W; j++) {
-            if ((j >= weight[i - 1]) && ((K[i - 1][j - weight[i - 1]] + value[i - 1]) > K[i - 1][j])) 
-            {
+            if ((j >= weight[i - 1]) && ((K[i - 1][j - weight[i - 1]] + value[i - 1]) > K[i - 1][j])) {
                 K[i][j] = K[i - 1][j - weight[i - 1]] + value[i - 1];
             }
             else
