@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void floyd( vector<vector<int>> sample )
+void floyd( vector<vector<int>> sample , vector<char> vertices )
 {
     vector<vector<int>> result( sample.size() , vector<int> ( sample.size() , 0 ) );
 
@@ -28,8 +28,17 @@ void floyd( vector<vector<int>> sample )
     }
     
     cout << "Matrix of shortest lengths between all nodes: " << endl;
+
+    cout << "   ";
+    for ( char i : vertices )
+    {
+        cout << i << "\t";
+    }
+    cout << endl;
+
     for ( int i = 0; i < sample.size(); i++ )
     {
+        cout << vertices.at(i) << ": ";
         for ( int j = 0; j < sample.size(); j++ )
         {
             cout << sample[i][j] << "\t";
@@ -39,11 +48,27 @@ void floyd( vector<vector<int>> sample )
     cout << endl;
 
     cout << "Matrix of shortest paths between every pairs of nodes: " << endl;
+
+    cout << "   ";
+    for ( char i : vertices )
+    {
+        cout << i << "\t";
+    }
+    cout << endl;
+
     for ( int i = 0; i < sample.size(); i++ )
     {
+        cout << vertices.at(i) << ": ";
         for ( int j = 0; j < sample.size(); j++ )
         {
-            cout << result[i][j] << "\t";
+            if (result[i][j] == 0)
+            {
+                cout << result[i][j] << "\t";
+            }
+            else
+            {
+                cout << vertices[result[i][j] - 1] << "\t";
+            }
         }
         cout << endl;
     }
@@ -59,6 +84,10 @@ int main()
         { 7 , INT_MAX , 6 , INT_MAX , INT_MAX },
         { INT_MAX , 3 , 9 , 2 , INT_MAX }
     };
-    floyd(sample_graph);
+
+    vector<char> vertices {'s','t','x','z','y'};
+
+    floyd(sample_graph, vertices);
+
     return 0;
 }
