@@ -96,6 +96,7 @@ public:
 };
 int main()
 {
+    int quan = 0;
     int graph[5][5] = {{INF, 10, INF, 5, INF},
                        {INF, INF, 1, 2, INF},
                        {INF, INF, INF, INF, 4},
