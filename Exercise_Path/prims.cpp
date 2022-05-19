@@ -21,7 +21,7 @@ private:
         int total = 0;
         for (int i = 1; i < V; i++) {
             total += matrix[i * V + parent[i]];
-            cout << i << "-->" << parent[i] << endl;
+            cout << i << "-->" << parent[i] << "\t weight: " << matrix[i * V + parent[i]] << endl;
         }
         cout << "Total cost is: " << total << endl;
     }
